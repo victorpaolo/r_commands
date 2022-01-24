@@ -44,9 +44,11 @@ y2 = as.character(x3)
 
 
 
+
 ##############################################################################
 
 #vectors
+
 ##: --> va de un numero a otro
 ##c() --> lo hace con el contenido que deseamos
 ##seq --> que vaya de un valor a otro con un salto de valor
@@ -71,9 +73,40 @@ z3[1] <- 99
 ##naming elements of a vector
 names(z1) <- c("Uno","Dos","Tres","Cuatro","Cinco")
 ##cross vectors
+z5 <- 1:4
+z6 <- 3:7
+union(z5,z6)
+intersect(z5,z6)
+setdiff(z5,z6)
+setdiff(z6,z5)
+2%in%z5
+##Order vector
+sort(z5, decreasing = T)
+##Count number of element
+table(z6)
+
+##Notes number specials
+###Inf representa infinito / -Inf representa menos infinito
+1/0
+###NaN representa un valor indefinido (Not a Number)
+0/0
+###NA representa un valor inexistente
+c(1,NA,2)
+###check
+z7 <- c(1,NA,0/0)
+is.na(z7)
+is-nan(z7)
+
+##Delete value NA from the vector
+bad <- is.na(z7)
+z7[!bad]
+
+
 
 
 ##############################################################################
+
+#Matrix
 m <- matrix(1:6, nrow = 2, ncol = 3)
 m
 #dimensiones
