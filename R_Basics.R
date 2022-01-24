@@ -391,9 +391,19 @@ plot(iris, y = NULL,  xlim = NULL, ylim = NULL,
      xgap.axis = NA, ygap.axis = NA)
 
 
+##Barplot
 
+##Histogram
 
+##Pie
 
+##Save a chart
+
+##Ggplot
+
+##Maps
+
+##Highcharter
 
 
 
