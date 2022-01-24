@@ -226,37 +226,93 @@ df[df$number>=35,]
 df[df$number>=35 & df$boolean == T,]
 
 ####filtering rows and columns
+df[df$number>=35,c("name","boolean")]
 df[df$number>=35,c(1,3)]
 
 
-###################################################################
-#Real data
+############################################################################
+#Use the library dplyr (SQL similarities)
+library(dplyr)
 library(ggplot2)
+data(msleep)
+
+##Common Functions
+###Head
+head(msleep)
 msleep %>% head()
 
+###Select
+
+head(select(msleep, name, sleep_total))
 msleep %>% 
-  select(name,sleep_total) %>% 
+  select(name, sleep_total) %>% 
+  head()
+
+head(select(msleep, -name))
+msleep %>% 
+  select(-name) %>% 
   head()
 
 
-msleep %>% select(-name,-genus) %>% head
+###Filter
+head(filter(msleep, sleep_total >= 16))
+msleep %>% 
+  filter(sleep_total >= 16) %>% 
+  head()
 
-##filtros
-msleep %>% filter(sleep_total>=16) %>% head()
-msleep %>% filter(sleep_total>=16, bodywt>=1) %>% head()
+head(filter(msleep, sleep_total >= 16, bodywt >= 1))
+msleep %>% 
+  filter(sleep_total >= 16, bodywt >= 1) %>% 
+  head()
 
-#ordenar
+
+###Arrange/Sort
 head(arrange(msleep,order))
-msleep %>% arrange(sleep_total) %>% head()
-msleep %>% arrange(sleep_total) %>% head()
+msleep %>% 
+  arrange(order) %>% 
+  head()
+
+head(arrange(msleep,order,awake))
+msleep %>% 
+  arrange(order,awake) %>% 
+  head()
 
 
-#mutate - nuevas columnas
-msleep <- msleep %>% 
-  mutate(rem_proportion = sleep_rem/sleep_total)
-msleep
+###Mutate
+head(mutate(msleep,rem_proportion = sleep_rem/sleep_total))
+msleep %>% 
+  mutate(rem_proportion = sleep_rem/sleep_total) %>% 
+  head()
+
+head(mutate(msleep,rem_proportion = sleep_rem/sleep_total,bodywt_grams = bodywt * 1000))
+msleep %>% 
+  mutate(rem_proportion = sleep_rem/sleep_total, bodywt_grams = bodywt * 1000) %>% 
+  head()
 
 
+###Group_by & summarize
+head(summarise(msleep, avg_sleep = mean(sleep_total)))
+msleep %>% 
+  summarise(avg_sleep = mean(sleep_total)) %>% 
+  head()
+
+summarise(msleep, avg_sleep = mean(sleep_total), min_sleep = min(sleep_total), max_sleep = max(sleep_total), total = n())
+msleep %>% 
+  summarise(avg_sleep = mean(sleep_total),
+            min_sleep = min(sleep_total), 
+            max_sleep = max(sleep_total), 
+            total = n())
+
+summarise(group_by(msleep, order),avg_sleep = mean(sleep_total), min_sleep = min(sleep_total), max_sleep = max(sleep_total), total = n())
+help("group_by")
+msleep %>% 
+  group_by(order) %>% 
+  summarise(avg_sleep = mean(sleep_total),
+            min_sleep = min(sleep_total), 
+            max_sleep = max(sleep_total), 
+            total = n())
+
+###Cases
 msleep %>% mutate(
   rem_proportion2 = 
     case_when(
@@ -266,19 +322,13 @@ msleep %>% mutate(
 )
 
 
-msleep$rem_porportion3 = msleep$sleep_rem/msleep$sleep_total
-msleep
-
-
-##groupby
 
 
 
-iris
 
 
 ##########################################################################
-#Estadistica dexriptiva
+#Descriptive statistics
 
 ages <- c(25,22,26,28,29,27,30,41) 
 length(ages)
@@ -289,9 +339,36 @@ median(ages)
 sd(ages)
 var(ages)
 
-##summary y gráficos
-
+##summary 
 summary(ages)
+
+##Create your own distribution
+my_data <- rnorm(1000, mean = 10, sd = 8)
+my_data
+
+##Get a sample of the population data
+sample(my_data)
+
+##Datasets firsts steps (already given)
+###Open
+data("airquality")
+###Saved in local
+rm("airquality")
+
+##Exploring Dataframes
+dim(airquality)
+ncol(airquality)
+nrow(airquality)
+names(airquality)
+head(airquality)
+tail(airquality)
+summary(airquality)
+str(airquality)
+table(airquality) ##better with a vector or a column
+
+
+
+##charts
 boxplot(ages)
 boxplot(iris)
 summary(iris)
