@@ -367,20 +367,38 @@ str(airquality)
 table(airquality) ##better with a vector or a column
 
 
-
-##charts
-boxplot(ages)
+###############################################################################
+#Charts
+##Boxplot
+help("boxplot")
+### By default
 boxplot(iris)
-summary(iris)
+### By formula
+boxplot(iris, range = 1.5, width = NULL, varwidth = FALSE,
+        notch = FALSE, outline = TRUE, names, plot = TRUE,
+        border = par("fg"), col = "lightgray", log = "",
+        pars = list(boxwex = 1.5, staplewex = 0.5, outwex = 0.5), 
+        horizontal = TRUE, add = TRUE, at = NULL)
+
+##Plot
+help("plot")
+plot(iris)
+plot(Sepal.Length ~ Petal.Length, data=iris)
+plot(iris, y = NULL,  xlim = NULL, ylim = NULL,
+     log = "", main = NULL, sub = NULL,
+     ann = par("ann"),
+     panel.first = NULL, panel.last = NULL, asp = NA,
+     xgap.axis = NA, ygap.axis = NA)
 
 
+
+
+
+
+
+
+
+###############################################################################
+#Other
 apply(iris %>% select(-Species), FUN=sd , MARGIN=2)
-
-
-x <- rnorm(100000, mean=100, sd=10)
-sd(x)
-mean(x)
-hist(x)
 plot(runif(1000))
-
-
