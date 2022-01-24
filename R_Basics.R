@@ -1,63 +1,76 @@
+#Import dplyr to to use %>% (pipe command)
 library(dplyr)
 library("tibble")
 
-#asignación
-b = 2
-c = 3 + 2
-2-1
-5%%2
-4<5
+
+#assignation variables & maths
+
+a = 5
+b = 3 + 2
+c = 3 - 2
+d = 5 * 9
+e = 80 / 10
+f = 2^2
+f1 = 2**2
+g = 5%%2
+h = 5%/%2
+i = sqrt(25)
+j = abs(4.6)
+
+
+#logic operators
+
+4 < 5
 !0
 !T
+6 != 5
 F | T
+F & T
 isTRUE(F)
-f <- 6
-a = 66
-h = 4L
-class(a)
-class(h)
-k = as.numeric(h)
-p = as.character(h)
-k
-p
 
 
+#variables
 
-#Crea dos variables, x e y, y asígnales un valor numérico
+x1 <- 6
+x2 = 66
+x3 = 4L
+##check class
+class(x1)
+class(x2)
+class(x3)
+##change class
+y1 = as.numeric(x2)
+y2 = as.character(x3)
 
-x <- 40
-y <- 60
 
-#Crea una tercera variable (z),suma de las dos anteriores
-z <- x+y
-z
-
-#Consulta su valor y tipo de dato
-z
-class(z)
-
-#Crea una cuarta variable (a), resultado de dividir z entre 2
-a <- z/2
-
-#Consulta su valor y tipo de dato
-a
-class(a)
-
-#Conviértela a entera y comprueba que lo ha hecho bien
-b = as.integer(a)
-class(b)
 
 ##############################################################################
 
-#vectores
-v <- 1:5
-w <- c(1,2,3,4,5)
-t <- seq(from=10, to=20, by=2)
-
-#seleccion
-v[1]
-v[2:4]
-
+#vectors
+##: --> va de un numero a otro
+##c() --> lo hace con el contenido que deseamos
+##seq --> que vaya de un valor a otro con un salto de valor
+##rep --> que repita un valor un N veces
+z1 <- 1:5
+z2 <- c(1,2,3,4,5)
+z3 <- seq(from=10, to=20, by=2)
+z4 <- rep(10, 20)
+##checks
+length(z4)
+##operation with vectors
+z1 + 1
+z1 * 2
+z1 == 4
+z1 >= 4
+##select elements in a vector
+z3[1]
+z3[2:4]
+z3[c(1,15)]
+##replace elements of a vector
+z3[1] <- 99
+##naming elements of a vector
+names(z1) <- c("Uno","Dos","Tres","Cuatro","Cinco")
+##cross vectors
 
 
 ##############################################################################
