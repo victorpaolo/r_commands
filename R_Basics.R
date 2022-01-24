@@ -107,63 +107,126 @@ z7[!bad]
 ##############################################################################
 
 #Matrix
+##Create  matrix
 m <- matrix(1:6, nrow = 2, ncol = 3)
 m
-#dimensiones
+
+##Check matrix
+class(m)
 dim(m)
 
-m[1,2]
-m[1,2:3]
+##Select elements in a matrix
+m[2,c(1,3)]
+m[1:2, 3]
+m[2, 1:3]
 m[,3]
+m[2]
+###get all elements unless the number specified 
+m[-1] 
+m[-2]
+m[-3]
 
-cbind(1:10,101:110)
+##operations with a matrix
+m + m
+###multiply elements in the same position
+m * m
+###real multiplication of a matrix
+m %*% m
 
-rbind(1:5,101:105,100)
+##manipulations of a matrix
+t(m)
 
-a <- 1:5
-b <- 6:10
+##vector + matrix
+v1 <- 1:5
+v2 <- c(11,12,13,14,15)
+v3 <- seq(from=10, to=20, by=2)
+v4 <- rep(5, 5)
 
-cbind(a,b)
-rbind(a,b)
+cbind(v1,v2,v3,v4)
+rbind(v1,v2,v3,v4)
 
 
 
 
+##############################################################################
 
-##########################################################
-#Dataframe
-name <- c("pepe","javi")
-edad <- c(20,60)
-sus <- c(T,F)
+#Lists
 
-df <- data.frame(name,edad,sus)
+
+
+##############################################################################
+
+#Dataframe (df)
+
+##Create a df
+name <- c("pepe","javi","rosario","valeria","anna")
+number <- c(20,60,36,25,45)
+boolean <- c(T,F,F,T,T)
+df <- data.frame(name,number,boolean)
 df
 
-#entrar a una columna
-##ver columna
+##columns
+###get a column
+df$name
+df[1]
+df["name"]
+df$number
 df[2]
-df["edad"]
+de["number"]
+df$boolean
+df[3]
+df["boolean"]
+####get an element of a column
+df$number[2]
 
-##ver vector
-df$edad
-##con dplyr
-df%>%select(name,edad)
-
-## nueva columna
+###add a column
 df$id <- 1:2
+df
 
-df %>% select(-id) <- df
+###remove a column
+df$id<-NULL
+df
+df %>% select(-id) <- df ## tengo dudas
+df
 
-## nueva fila
-df_insertar=data.frame(name="yoyo",edad=35,sus=T,id=3)
+###names
+names(df)
+
+##rows
+###add a row
+df_insertar=data.frame(name="yoyo",number=35,boolean=T)
 df
 df_insertar
+df<-rbind(df,df_insertar)
+df
 df %>% union(df_insertar)
 df
 
+###names
+row.names(df)
 
 
+##manipulation
+###select columns
+df$name
+df[1]
+df["name"]
+df[c("name","boolean")]
+df[c(1,3)]
 
+###filtering
+####first 4 rows and all columns
+df[1:4,]
+
+####first 4 rows and selected columns
+df[1:4,c("name","boolean")]
+
+####by condition
+df[df$number>=35,]
+df[df$number>=35 & df$boolean == T,]
+
+####filtering rows and columns
+df[df$number>=35,c(1,3)]
 
 
 ###################################################################
