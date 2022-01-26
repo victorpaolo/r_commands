@@ -86,11 +86,11 @@ sort(z5, decreasing = T)
 table(z6)
 
 ##Notes number specials
-###Inf representa infinito / -Inf representa menos infinito
+###Inf represents infinity
 1/0
-###NaN representa un valor indefinido (Not a Number)
+###NaN represents a undefined number (Not a Number)
 0/0
-###NA representa un valor inexistente
+###NA represents un non-existing value
 c(1,NA,2)
 ###check
 z7 <- c(1,NA,0/0)
