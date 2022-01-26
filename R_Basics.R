@@ -444,6 +444,18 @@ for (i in j) {
 
 
 
+##############################################################################
+#Treat Files
+
+##Read files
+###Excel
+library(readxl)
+read_excel("data/covid_data.xlsx")
+
+###URL
+browseURL("https://ourworldindata.org/coronavirus-source-data")
+
+
 ###############################################################################
 #Other
 apply(iris %>% select(-Species), FUN=sd , MARGIN=2)
