@@ -151,7 +151,23 @@ rbind(v1,v2,v3,v4)
 ##############################################################################
 
 #Lists
+##Create a list
+l <- list(2,"a",TRUE, 1+4i, c("a","b"),21:28)
 
+##Select element of a list
+l
+l[[1]]
+l[[c(5,1)]]
+l[[c(6,2)]]
+
+##Lists with numbers
+l1 <- list("Numbers"=7:11,"Words"=c("a","b","c"))
+l1$Numbers
+l1$Words[1]
+
+##Unlist
+l2 <- list(1:4,7:10)
+unlist(l2)
 
 
 ##############################################################################
@@ -366,6 +382,65 @@ summary(airquality)
 str(airquality)
 table(airquality) ##better with a vector or a column
 
+
+
+##############################################################################
+#Functions
+##Create a function
+my_function <- function(x){
+  y <- x+1
+  return(y)
+}
+my_function(5)
+
+##Conditional if
+z <- 4:9
+if_conditional <- function(z,m=5){
+  if (z[1]>6) {
+    return(z+2)
+  }
+  else
+  {
+    return(z-m)
+  }
+}
+z
+if_conditional(z)
+
+
+##Bucle for
+t <- 1:10
+for (o in t) {
+  print(1:o)
+}
+
+
+##Bucle repeat 
+p <- 5
+repeat{
+  print(p)
+  if (p>15) break
+  p <- p+2
+}
+
+
+##Bucle while 
+u <- 5
+while (u<=15) {
+  print(u)
+  u <- u+2
+}
+####Note symbol = here it is the key
+
+
+##Next
+j <- 1:10
+for (i in j) {
+  if (i %in% 2:4) 
+    next
+    print(i)
+  
+}
 
 
 
